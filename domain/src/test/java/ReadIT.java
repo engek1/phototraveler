@@ -23,7 +23,7 @@ public class ReadIT {
 	public void test() {
 
 		EntityManager em = Persistence.createEntityManagerFactory(
-				"ch.bfh.bti7515.phototraveler.domain").createEntityManager();
+                AllTests.PERSISTENCE_UNIT_NAME).createEntityManager();
 
 		Query q = em.createQuery("select a from Author a");
 		@SuppressWarnings("unchecked")

@@ -40,7 +40,7 @@ public class CreateIT {
 		book2.setAuthor(author);
 
         EntityManager em = Persistence.createEntityManagerFactory(
-                "ch.bfh.bti7515.phototraveler.domain").createEntityManager();
+                AllTests.PERSISTENCE_UNIT_NAME).createEntityManager();
 
 		em.getTransaction().begin();
 		em.persist(author);
