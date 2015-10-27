@@ -8,8 +8,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
-import ch.bfh.bti7051.phototraveler.model.Author;
-import ch.bfh.bti7051.phototraveler.model.Book;
+import ch.bfh.bti7515.phototraveler.model.Author;
+import ch.bfh.bti7515.phototraveler.model.Book;
 import org.junit.Assert;
 import org.junit.Test;
 

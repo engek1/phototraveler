@@ -3,8 +3,8 @@
 
     <persistence-unit name="ch.bfh.bti7515.phototraveler.domain">
 
-        <class>ch.bfh.bti7051.phototraveler.model.Author</class>
-        <class>ch.bfh.bti7051.phototraveler.model.Book</class>
+        <class>ch.bfh.bti7515.phototraveler.model.Author</class>
+        <class>ch.bfh.bti7515.phototraveler.model.Book</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>

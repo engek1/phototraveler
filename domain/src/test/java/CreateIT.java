@@ -8,8 +8,8 @@ import java.util.Date;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 
-import ch.bfh.bti7051.phototraveler.model.Author;
-import ch.bfh.bti7051.phototraveler.model.Book;
+import ch.bfh.bti7515.phototraveler.model.Author;
+import ch.bfh.bti7515.phototraveler.model.Book;
 import org.junit.Test;
 
 /**

@@ -1,4 +1,4 @@
-package ch.bfh.bti7051.phototraveler.model;
+package ch.bfh.bti7515.phototraveler.model;
 
 import javax.persistence.*;
 import java.util.Date;
