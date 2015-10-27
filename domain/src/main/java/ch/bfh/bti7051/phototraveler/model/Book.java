@@ -1,9 +1,6 @@
 package ch.bfh.bti7051.phototraveler.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -12,13 +9,19 @@ import java.util.Date;
 @Entity
 public class Book {
 
-    private Long id;
-    private String title;
-    private Date releaseDate;
-    private Author author;
-
     @GeneratedValue
     @Id
+    private Long id;
+
+    @Basic
+    private String title;
+
+    @Temporal(TemporalType.DATE)
+    private Date releaseDate;
+
+    @ManyToOne
+    private Author author;
+
     public Long getId() {
         return id;
     }
@@ -43,7 +46,6 @@ public class Book {
         this.releaseDate = releaseDate;
     }
 
-    @ManyToOne
     public Author getAuthor() {
         return author;
     }

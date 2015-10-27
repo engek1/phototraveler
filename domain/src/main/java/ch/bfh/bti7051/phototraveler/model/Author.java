@@ -9,13 +9,19 @@ import java.util.List;
 @Entity
 public class Author {
 
-    private Long id;
-    private String firstname;
-    private String lastname;
-    private List<Book> books;
-
     @GeneratedValue
     @Id
+    private Long id;
+
+    @Basic
+    private String firstname;
+
+    @Basic
+    private String lastname;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Book> books;
+
     public Long getId() {
         return id;
     }
@@ -24,7 +30,6 @@ public class Author {
         this.id = id;
     }
 
-    @Basic
     public String getFirstname() {
         return firstname;
     }
@@ -33,7 +38,6 @@ public class Author {
         this.firstname = firstname;
     }
 
-    @Basic
     public String getLastname() {
         return lastname;
     }
@@ -42,7 +46,6 @@ public class Author {
         this.lastname = lastname;
     }
 
-    @OneToMany
     public List<Book> getBooks() {
         return books;
     }
