@@ -6,7 +6,7 @@
 
     <groupId>ch.bfh.bti7515.phototraveler</groupId>
     <artifactId>domain</artifactId>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
 
     <parent>
         <groupId>ch.bfh.bti7515.phototraveler</groupId>
@@ -14,5 +14,16 @@
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../parent</relativePath>
     </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.eclipse.persistence</groupId>
+            <artifactId>eclipselink</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>
