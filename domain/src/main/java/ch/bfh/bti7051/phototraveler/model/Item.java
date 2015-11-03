@@ -6,6 +6,7 @@ import java.util.List;
 /**
  * Created by webel3 on 03.11.2015.
  */
+@Entity
 public class Item {
 
     @GeneratedValue

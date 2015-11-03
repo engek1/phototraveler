@@ -1,14 +1,12 @@
 package ch.bfh.bti7051.phototraveler.model;
 
-import javax.persistence.CascadeType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 /**
  * Created by webel3 on 03.11.2015.
  */
+@Entity
 public class Dashboard {
 
     @GeneratedValue

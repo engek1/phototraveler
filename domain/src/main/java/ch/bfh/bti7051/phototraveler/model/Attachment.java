@@ -1,13 +1,11 @@
 package ch.bfh.bti7051.phototraveler.model;
 
-import javax.persistence.Basic;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Lob;
+import javax.persistence.*;
 
 /**
  * Created by webel3 on 03.11.2015.
  */
+@Entity
 public class Attachment {
 
     @GeneratedValue

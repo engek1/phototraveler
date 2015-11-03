@@ -5,6 +5,7 @@ import javax.persistence.*;
 /**
  * Created by webel3 on 03.11.2015.
  */
+@Entity
 public class User {
 
     @GeneratedValue
