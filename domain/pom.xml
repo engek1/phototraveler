@@ -7,13 +7,12 @@
     <groupId>ch.bfh.bti7515.phototraveler</groupId>
     <artifactId>domain</artifactId>
     <packaging>pom</packaging>
-    <version>0.0.1-SNAPSHOT</version>
 
     <parent>
-        <artifactId>phototraveler</artifactId>
-        <groupId>ch.bfh.bti7515</groupId>
+        <groupId>ch.bfh.bti7515.phototraveler</groupId>
+        <artifactId>parent</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
+        <relativePath>../parent</relativePath>
     </parent>
 
 </project>
