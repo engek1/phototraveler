@@ -20,4 +20,36 @@ public class Attachment {
 
     @Lob
     private Lob data;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getFilename() {
+        return filename;
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
+    }
+
+    public Boolean getFiletype() {
+        return filetype;
+    }
+
+    public void setFiletype(Boolean filetype) {
+        this.filetype = filetype;
+    }
+
+    public Lob getData() {
+        return data;
+    }
+
+    public void setData(Lob data) {
+        this.data = data;
+    }
 }

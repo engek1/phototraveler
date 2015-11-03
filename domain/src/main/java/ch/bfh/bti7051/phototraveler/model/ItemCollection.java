@@ -75,7 +75,11 @@ public class ItemCollection {
         return items;
     }
 
-    public void setItems(List<Item> items) {
-        this.items = items;
+    public void addItem(Item item) {
+        this.items.add(item);
+    }
+
+    public void addItems(List<Item> items) {
+        this.items.addAll(items);
     }
 }

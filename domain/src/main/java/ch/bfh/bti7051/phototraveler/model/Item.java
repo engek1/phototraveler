@@ -25,6 +25,15 @@ public class Item {
     @OneToMany(cascade = CascadeType.ALL)
     private List<Attachment> attachments;
 
+    public Item() {
+        // empty constructor is required by JPA
+    }
+
+    public Item(String name) {
+        this.name = name;
+    }
+
+
     public Long getId() {
         return id;
     }
@@ -61,7 +70,12 @@ public class Item {
         return attachments;
     }
 
-    public void setAttachments(List<Attachment> attachments) {
-        this.attachments = attachments;
+    public void addAttachment(Attachment attachment) {
+        this.attachments.add(attachment);
     }
+
+    public void addAttachments(List<Attachment> attachments) {
+        this.attachments.addAll(attachments);
+    }
+
 }

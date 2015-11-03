@@ -31,15 +31,23 @@ public class Dashboard {
         return items;
     }
 
-    public void setItems(List<Item> items) {
-        this.items = items;
+    public void addItem(Item item) {
+        this.items.add(item);
+    }
+
+    public void addItems(List<Item> items) {
+        this.items.addAll(items);
     }
 
     public List<ItemCollection> getCollections() {
         return collections;
     }
 
-    public void setCollections(List<ItemCollection> collections) {
-        this.collections = collections;
+    public void addCollection(ItemCollection itemCollection) {
+        this.collections.add(itemCollection);
+    }
+
+    public void addCollections(List<ItemCollection> collections) {
+        this.collections.addAll(collections);
     }
 }
