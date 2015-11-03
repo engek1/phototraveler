@@ -2,6 +2,7 @@ package ch.bfh.bti7051.phototraveler.model;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -28,8 +29,6 @@ public class ItemCollection {
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<Item> items;
-
-
 
     public Long getId() {
         return id;

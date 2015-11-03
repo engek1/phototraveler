@@ -58,8 +58,8 @@ public class CreateUserDashboardWithEntries {
         EntityManager em = Persistence.createEntityManagerFactory(
                 AllTestsRunner.PERSISTENCE_NAME).createEntityManager();
 
-        // it is enough to just persist the user because
-        // all relationships have cascade type "ALL" => another test.
+        // it is enough to just persist the user because all
+        // relationships have cascade type "ALL" => let's test that too
         em.getTransaction().begin();
         em.persist(user);
         em.getTransaction().commit();
