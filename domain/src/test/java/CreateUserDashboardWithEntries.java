@@ -55,8 +55,7 @@ public class CreateUserDashboardWithEntries {
         // set board to the created user
         user.setDashboard(board);
 
-        EntityManager em = Persistence.createEntityManagerFactory(
-                AllTestsRunner.PERSISTENCE_NAME).createEntityManager();
+        EntityManager em = Persistence.createEntityManagerFactory(AllTestsRunner.PERSISTENCE_NAME).createEntityManager();
 
         // it is enough to just persist the user because all
         // relationships have cascade type "ALL" => let's test that too
