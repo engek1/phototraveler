@@ -19,7 +19,7 @@ public class Attachment {
     private Boolean filetype;
 
     @Lob
-    private Lob data;
+    private Byte[] data;
 
     public Long getId() {
         return id;
@@ -45,11 +45,11 @@ public class Attachment {
         this.filetype = filetype;
     }
 
-    public Lob getData() {
+    public Byte[] getData() {
         return data;
     }
 
-    public void setData(Lob data) {
+    public void setData(Byte[] data) {
         this.data = data;
     }
 }

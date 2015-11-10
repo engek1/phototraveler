@@ -1,6 +1,7 @@
 package ch.bfh.bti7051.phototraveler.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,7 +27,7 @@ public class Item {
     private List<Attachment> attachments;
 
     public Item() {
-        // empty constructor is required by JPA
+        this.attachments = new ArrayList<Attachment>();
     }
 
     public Item(String name) {

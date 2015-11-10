@@ -1,6 +1,7 @@
 package ch.bfh.bti7051.phototraveler.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,6 +19,11 @@ public class Dashboard {
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<ItemCollection> collections;
+
+    public Dashboard() {
+        this.items = new ArrayList<Item>();
+        this.collections = new ArrayList<ItemCollection>();
+    }
 
     public Long getId() {
         return id;

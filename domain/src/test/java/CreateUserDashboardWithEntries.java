@@ -63,5 +63,7 @@ public class CreateUserDashboardWithEntries {
         em.getTransaction().begin();
         em.persist(user);
         em.getTransaction().commit();
+
+        System.out.println("-- test finished.");
     }
 }
