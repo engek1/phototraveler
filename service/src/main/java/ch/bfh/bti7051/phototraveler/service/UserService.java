@@ -1,4 +1,4 @@
-package ch.bfh.bti7051.phototraveler.rest;
+package ch.bfh.bti7051.phototraveler.service;
 
 import javax.ws.rs.*;
 
