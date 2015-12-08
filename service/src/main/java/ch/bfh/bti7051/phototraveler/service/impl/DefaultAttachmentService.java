@@ -19,6 +19,7 @@ import java.util.List;
 public class DefaultAttachmentService implements AttachmentService {
 
     private final ModelMapper mapper = new ModelMapper();
+
     @Inject
     private AttachmentRepository attachmentRepository;
 
