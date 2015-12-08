@@ -7,6 +7,7 @@ import ch.bfh.bti7051.phototraveler.service.dto.ItemDTO;
 import org.modelmapper.ModelMapper;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.List;
 /**
  * Created by Lukas on 08.12.2015.
  */
+@Named
 public class DefaultItemService implements ItemService {
 
     private final ModelMapper mapper = new ModelMapper();
