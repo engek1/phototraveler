@@ -1,6 +1,7 @@
 package ch.bfh.bti7051.phototraveler.service;
 
 import ch.bfh.bti7051.phototraveler.service.dto.AttachmentDTO;
+import ch.bfh.bti7051.phototraveler.service.services.AttachmentService;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

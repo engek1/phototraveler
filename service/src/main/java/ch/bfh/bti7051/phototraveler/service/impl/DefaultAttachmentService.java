@@ -2,7 +2,7 @@ package ch.bfh.bti7051.phototraveler.service.impl;
 
 import ch.bfh.bti7051.phototraveler.model.Attachment;
 import ch.bfh.bti7051.phototraveler.repository.AttachmentRepository;
-import ch.bfh.bti7051.phototraveler.service.AttachmentService;
+import ch.bfh.bti7051.phototraveler.service.services.AttachmentService;
 import ch.bfh.bti7051.phototraveler.service.dto.AttachmentDTO;
 import org.modelmapper.ModelMapper;
 

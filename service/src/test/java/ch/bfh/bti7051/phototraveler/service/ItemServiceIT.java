@@ -1,6 +1,7 @@
 package ch.bfh.bti7051.phototraveler.service;
 
 import ch.bfh.bti7051.phototraveler.service.dto.ItemDTO;
+import ch.bfh.bti7051.phototraveler.service.services.ItemService;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

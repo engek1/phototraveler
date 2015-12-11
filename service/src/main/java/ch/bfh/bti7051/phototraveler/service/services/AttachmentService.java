@@ -1,4 +1,4 @@
-package ch.bfh.bti7051.phototraveler.service;
+package ch.bfh.bti7051.phototraveler.service.services;
 
 import ch.bfh.bti7051.phototraveler.service.dto.AttachmentDTO;
 

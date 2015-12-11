@@ -2,7 +2,7 @@ package ch.bfh.bti7051.phototraveler.service.impl;
 
 import ch.bfh.bti7051.phototraveler.model.Item;
 import ch.bfh.bti7051.phototraveler.repository.ItemRepository;
-import ch.bfh.bti7051.phototraveler.service.ItemService;
+import ch.bfh.bti7051.phototraveler.service.services.ItemService;
 import ch.bfh.bti7051.phototraveler.service.dto.ItemDTO;
 import org.modelmapper.ModelMapper;
 

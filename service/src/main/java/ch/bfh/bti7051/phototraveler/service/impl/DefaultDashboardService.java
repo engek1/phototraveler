@@ -2,7 +2,7 @@ package ch.bfh.bti7051.phototraveler.service.impl;
 
 import ch.bfh.bti7051.phototraveler.model.Dashboard;
 import ch.bfh.bti7051.phototraveler.repository.DashboardRepository;
-import ch.bfh.bti7051.phototraveler.service.DashboardService;
+import ch.bfh.bti7051.phototraveler.service.services.DashboardService;
 import ch.bfh.bti7051.phototraveler.service.dto.DashboardDTO;
 import org.modelmapper.ModelMapper;
 
