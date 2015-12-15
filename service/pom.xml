@@ -6,7 +6,8 @@
 
     <groupId>ch.bfh.bti7515.phototraveler</groupId>
     <artifactId>service</artifactId>
-    <packaging>pom</packaging>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
 
     <parent>
         <groupId>ch.bfh.bti7515.phototraveler</groupId>
@@ -44,12 +45,10 @@
             <artifactId>spring-test</artifactId>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>javax.ws.rs</groupId>
             <artifactId>javax.ws.rs-api</artifactId>
         </dependency>
-
     </dependencies>
 
 </project>
