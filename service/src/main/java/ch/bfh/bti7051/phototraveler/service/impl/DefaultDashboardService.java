@@ -20,6 +20,10 @@ public class DefaultDashboardService implements DashboardService {
     @Inject
     private DashboardRepository dashboardRepository;
 
+    public DefaultDashboardService() {
+        // default empty constructor, required by spring framework.
+    }
+
     public DashboardDTO create(DashboardDTO dto) {
         Dashboard dashboard = mapper.map(dto, Dashboard.class);
         Dashboard created = dashboardRepository.save(dashboard);

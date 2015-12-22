@@ -23,6 +23,10 @@ public class DefaultItemService implements ItemService {
     @Inject
     private ItemRepository itemRepository;
 
+    public DefaultItemService() {
+        // default empty constructor, required by spring framework.
+    }
+
     public ItemDTO create(ItemDTO dto) {
         Item item = mapper.map(dto, Item.class);
         Item created = itemRepository.save(item);

@@ -20,6 +20,10 @@ public class DefaultUserService implements UserService {
     @Inject
     private UserRepository userRepository;
 
+    public DefaultUserService() {
+        // default empty constructor, required by spring framework.
+    }
+
     public UserDTO create(UserDTO dto) {
         User user = mapper.map(dto, User.class);
         User created = userRepository.save(user);

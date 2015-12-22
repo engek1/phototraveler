@@ -23,6 +23,10 @@ public class DefaultAttachmentService implements AttachmentService {
     @Inject
     private AttachmentRepository attachmentRepository;
 
+    public DefaultAttachmentService() {
+        // default empty constructor, required by spring framework.
+    }
+
     public AttachmentDTO create(AttachmentDTO dto) {
         Attachment attachment = mapper.map(dto, Attachment.class);
         Attachment created = attachmentRepository.save(attachment);
