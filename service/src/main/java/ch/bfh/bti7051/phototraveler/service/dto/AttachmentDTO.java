@@ -1,6 +1,8 @@
 package ch.bfh.bti7051.phototraveler.service.dto;
 
-public class AttachmentDTO {
+import java.io.Serializable;
+
+public class AttachmentDTO implements Serializable {
 
     private Long id;
 

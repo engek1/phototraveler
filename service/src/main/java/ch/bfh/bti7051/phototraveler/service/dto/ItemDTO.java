@@ -1,9 +1,10 @@
 package ch.bfh.bti7051.phototraveler.service.dto;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ItemDTO {
+public class ItemDTO implements Serializable {
 
     private Long id;
 

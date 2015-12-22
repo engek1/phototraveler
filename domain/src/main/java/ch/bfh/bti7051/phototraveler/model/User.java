@@ -1,12 +1,13 @@
 package ch.bfh.bti7051.phototraveler.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by webel3 on 03.11.2015.
  */
 @Entity
-public class User {
+public class User implements Serializable {
 
     @GeneratedValue
     @Id

@@ -1,6 +1,7 @@
 package ch.bfh.bti7051.phototraveler.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +9,7 @@ import java.util.List;
  * Created by webel3 on 03.11.2015.
  */
 @Entity
-public class Item {
+public class Item implements Serializable {
 
     @GeneratedValue
     @Id

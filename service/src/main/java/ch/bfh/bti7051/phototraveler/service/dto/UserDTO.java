@@ -1,8 +1,8 @@
 package ch.bfh.bti7051.phototraveler.service.dto;
 
-import javax.persistence.*;
+import java.io.Serializable;
 
-public class UserDTO {
+public class UserDTO implements Serializable {
 
     private Long id;
 
