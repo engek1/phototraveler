@@ -13,6 +13,8 @@
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="org.h2.Driver" />
         <property name="url" value="jdbc:h2:~/phototravelerDB" />
+        <!--<property name="driverClassName" value="com.mysql.jdbc.Driver" />-->
+        <!--<property name="url" value="jdbc:mysql://localhost:3333/phototraveler" />-->
         <property name="username" value="bfh" />
         <property name="password" value="bfh" />
     </bean>

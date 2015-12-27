@@ -39,10 +39,16 @@ public class DashboardController {
         return dashboardService.read(id);
     }
 
+    @RequestMapping(method = RequestMethod.GET)
+    @ResponseBody
+    public String getDashboards() {
+        return "hallihallo";
+    }
+
     /**
      * Update
      */
-    @RequestMapping(method = RequestMethod.PUT)
+    @RequestMapping(value = "{id}", method = RequestMethod.PUT)
     @ResponseBody
     public DashboardDTO updateDashboard(@RequestBody DashboardDTO dashboard) {
         DashboardDTO updatedDashboard = dashboardService.update(dashboard);
