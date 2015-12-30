@@ -3,9 +3,7 @@ import ch.bfh.bti7051.phototraveler.model.Item;
 import ch.bfh.bti7051.phototraveler.model.ItemCollection;
 import ch.bfh.bti7051.phototraveler.model.User;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
@@ -15,8 +13,6 @@ import java.util.List;
 /**
  * Created by webel3 on 03.11.2015.
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("/persistenceContext.xml")
 public class CreateUserDashboardWithEntries {
 
     @Test

@@ -8,7 +8,7 @@ public class AttachmentDTO implements Serializable {
 
     private String filename;
 
-    private Boolean filetype;
+    private String filetype;
 
     private Byte[] data;
 
@@ -28,11 +28,11 @@ public class AttachmentDTO implements Serializable {
         this.filename = filename;
     }
 
-    public Boolean getFiletype() {
+    public String getFiletype() {
         return filetype;
     }
 
-    public void setFiletype(Boolean filetype) {
+    public void setFiletype(String filetype) {
         this.filetype = filetype;
     }
 

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
+import java.util.Collection;
 
 /**
  * Created by Lukas on 22.12.2015.
@@ -39,10 +40,13 @@ public class DashboardController {
         return dashboardService.read(id);
     }
 
+    /**
+     * ReadAll
+     */
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
-    public String getDashboards() {
-        return "hallihallo";
+    public Collection<DashboardDTO> getDashboards() {
+        return dashboardService.list();
     }
 
     /**

@@ -2,12 +2,17 @@ package ch.bfh.bti7051.phototraveler.service.impl;
 
 import ch.bfh.bti7051.phototraveler.model.Dashboard;
 import ch.bfh.bti7051.phototraveler.repository.DashboardRepository;
-import ch.bfh.bti7051.phototraveler.service.services.DashboardService;
 import ch.bfh.bti7051.phototraveler.service.dto.DashboardDTO;
+import ch.bfh.bti7051.phototraveler.service.services.DashboardService;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 /**
  * Created by Lukas on 08.12.2015.
@@ -38,6 +43,13 @@ public class DefaultDashboardService implements DashboardService {
         return mapper.map(dashboard, DashboardDTO.class);
     }
 
+    public Collection<DashboardDTO> list() {
+        Iterable<Dashboard> dashboards = dashboardRepository.findAll();
+        Type listType = new TypeToken<Collection<DashboardDTO>>() {
+        }.getType();
+        return mapper.map(dashboards, listType);
+    }
+
     public DashboardDTO update(DashboardDTO dashboard) {
         Dashboard entity = dashboardRepository.findOne(dashboard.getId());
         mapper.map(dashboard, entity);
@@ -49,3 +61,4 @@ public class DefaultDashboardService implements DashboardService {
         dashboardRepository.delete(dto.getId());
     }
 }
+

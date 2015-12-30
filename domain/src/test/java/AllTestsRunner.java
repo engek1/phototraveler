@@ -8,5 +8,5 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses(CreateUserDashboardWithEntries.class)
 public class AllTestsRunner {
 
-    public static final String PERSISTENCE_NAME = "ch.bfh.bti7515.phototraveler.domain";
+    public static final String PERSISTENCE_NAME = "ch.bfh.bti7051.phototraveler.domain";
 }

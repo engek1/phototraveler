@@ -17,7 +17,7 @@ public class Attachment implements Serializable {
     private String filename;
 
     @Basic
-    private Boolean filetype;
+    private String filetype;
 
     @Lob
     private Byte[] data;
@@ -38,11 +38,11 @@ public class Attachment implements Serializable {
         this.filename = filename;
     }
 
-    public Boolean getFiletype() {
+    public String getFiletype() {
         return filetype;
     }
 
-    public void setFiletype(Boolean filetype) {
+    public void setFiletype(String filetype) {
         this.filetype = filetype;
     }
 
