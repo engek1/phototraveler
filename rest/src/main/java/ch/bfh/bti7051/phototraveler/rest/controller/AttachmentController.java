@@ -38,11 +38,7 @@ public class AttachmentController {
     @ResponseBody
     public AttachmentDTO getAttachment(@PathVariable long id) {
         System.out.println("Attachment requested with id = " + id);
-        //return attachmentService.read(id);
-        AttachmentDTO dummy = new AttachmentDTO();
-        dummy.setFilename("blume");
-        dummy.setFiletype("pdf");
-        return dummy;
+        return attachmentService.read(id);
     }
 
     /**
