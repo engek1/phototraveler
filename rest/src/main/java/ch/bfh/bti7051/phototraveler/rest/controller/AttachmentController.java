@@ -34,7 +34,7 @@ public class AttachmentController {
     /**
      * Read
      */
-    @RequestMapping(value = "{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
     public AttachmentDTO getAttachment(@PathVariable long id) {
         System.out.println("Attachment requested with id = " + id);
@@ -53,7 +53,7 @@ public class AttachmentController {
     /**
      * Update
      */
-    @RequestMapping(value = "{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     @ResponseBody
     public AttachmentDTO updateAttachment(@RequestBody AttachmentDTO attachment) {
         AttachmentDTO updatedAttachment = attachmentService.update(attachment);
@@ -64,7 +64,7 @@ public class AttachmentController {
     /**
      * Delete
      */
-    @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.OK)
     public void deleteAttachment(@PathVariable long id) {
         AttachmentDTO attachment = attachmentService.read(id);

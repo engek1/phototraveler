@@ -33,7 +33,7 @@ public class DashboardController {
     /**
      * Read
      */
-    @RequestMapping(value = "{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
     public DashboardDTO getDashboard(@PathVariable long id) {
         System.out.println("Dashboard requested with id = " + id);
@@ -52,7 +52,7 @@ public class DashboardController {
     /**
      * Update
      */
-    @RequestMapping(value = "{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     @ResponseBody
     public DashboardDTO updateDashboard(@RequestBody DashboardDTO dashboard) {
         DashboardDTO updatedDashboard = dashboardService.update(dashboard);
@@ -63,7 +63,7 @@ public class DashboardController {
     /**
      * Delete
      */
-    @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.OK)
     public void deleteDashboard(@PathVariable long id) {
         DashboardDTO dashboard = dashboardService.read(id);
