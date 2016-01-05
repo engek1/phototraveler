@@ -11,12 +11,10 @@
 
     <!-- *** Datasource *** -->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <property name="driverClassName" value="org.h2.Driver" />
-        <property name="url" value="jdbc:h2:~/phototravelerDB" />
-        <!--<property name="driverClassName" value="com.mysql.jdbc.Driver" />-->
-        <!--<property name="url" value="jdbc:mysql://localhost:3333/phototraveler" />-->
-        <property name="username" value="bfh" />
-        <property name="password" value="bfh" />
+        <property name="driverClassName" value="${datasource.driver}" />
+        <property name="url" value="${datasource.url}" />
+        <property name="username" value="${datasource.user}" />
+        <property name="password" value="${datasource.password}" />
     </bean>
 
     <!-- *** EntityManagerFactory *** -->

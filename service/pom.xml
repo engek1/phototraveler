@@ -51,4 +51,16 @@
         </dependency>
     </dependencies>
 
+    <profiles>
+        <profile>
+            <id>localhost</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>openshift</id>
+        </profile>
+    </profiles>
+
 </project>

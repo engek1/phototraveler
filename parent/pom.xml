@@ -145,4 +145,22 @@
         </pluginManagement>
     </build>
 
+    <profiles>
+        <profile>
+            <id>localhost</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <properties.type>localhost</properties.type>
+            </properties>
+        </profile>
+        <profile>
+            <id>openshift</id>
+            <properties>
+                <properties.type>openshift</properties.type>
+            </properties>
+        </profile>
+    </profiles>
+
 </project>
