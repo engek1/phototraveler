@@ -41,8 +41,11 @@ public class DashboardController {
      * ReadAll
      */
     @RequestMapping(method = RequestMethod.GET)
-    public Collection<DashboardDTO> getDashboards() {
-        return dashboardService.list();
+//    public Collection<DashboardDTO> getDashboards() {
+//        return dashboardService.list();
+//    }
+    public String getDashboards() {
+        return "those are all dashboards ;-)";
     }
 
     /**
