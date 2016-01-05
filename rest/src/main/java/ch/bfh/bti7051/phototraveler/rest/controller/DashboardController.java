@@ -6,7 +6,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
-import java.util.Collection;
 
 /**
  * Created by Lukas on 22.12.2015.
