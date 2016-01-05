@@ -7,7 +7,6 @@
             <pattern>%d{dd.MM.yyyy HH:mm:ss.SSS} [%thread] %-5level %logger{100} - %msg%n</pattern>
         </encoder>
     </appender>
-    -->
 
     <appender name="SPRING" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>spring.log</file>
@@ -23,9 +22,10 @@
             <MaxFileSize>5MB</MaxFileSize>
         </triggeringPolicy>
     </appender>
+    -->
 
     <appender name="SCHNABBER" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>schnabber.log</file>
+        <file>/var/lib/openshift/568a6b4689f5cfa5d0000108/app-root/logs/schnabber.log</file>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <Pattern>%d{dd.MM.yyyy HH:mm:ss.SSS} [%thread] %-5level %logger{100} - %msg%n</Pattern>
         </encoder>
@@ -39,11 +39,7 @@
         </triggeringPolicy>
     </appender>
 
-    <logger name="org.springframework" level="DEBUG" additivity="false">
-        <appender-ref ref="SPRING" />
-    </logger>
-
-    <root level="INFO">
+    <root level="DEBUG">
         <appender-ref ref="SCHNABBER" />
     </root>
 
