@@ -52,6 +52,19 @@
         </profile>
         <profile>
             <id>openshift</id>
+            <build>
+                <finalName>tc7</finalName>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-war-plugin</artifactId>
+                        <version>2.1.1</version>
+                        <configuration>
+                            <outputDirectory>${project.parent.basedir}/../webapps</outputDirectory>
+                            <warName>ROOT</warName>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
         </profile>
     </profiles>
 
