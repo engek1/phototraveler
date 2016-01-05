@@ -3,7 +3,6 @@ package ch.bfh.bti7051.phototraveler.rest.controller;
 import ch.bfh.bti7051.phototraveler.service.dto.DashboardDTO;
 import ch.bfh.bti7051.phototraveler.service.services.DashboardService;
 import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
@@ -12,7 +11,7 @@ import java.util.Collection;
 /**
  * Created by Lukas on 22.12.2015.
  */
-@Controller
+@RestController
 @RequestMapping("/dashboard")
 public class DashboardController {
 
@@ -23,7 +22,6 @@ public class DashboardController {
      * Create
      */
     @RequestMapping(method = RequestMethod.POST)
-    @ResponseBody
     public DashboardDTO createDashboard(@RequestBody DashboardDTO dashboard) {
         DashboardDTO createdDashboard = this.dashboardService.create(dashboard);
         System.out.println("Dashboard created with id = " + createdDashboard.getId());
@@ -34,7 +32,6 @@ public class DashboardController {
      * Read
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    @ResponseBody
     public DashboardDTO getDashboard(@PathVariable long id) {
         System.out.println("Dashboard requested with id = " + id);
         return dashboardService.read(id);
@@ -44,7 +41,6 @@ public class DashboardController {
      * ReadAll
      */
     @RequestMapping(method = RequestMethod.GET)
-    @ResponseBody
     public Collection<DashboardDTO> getDashboards() {
         return dashboardService.list();
     }
@@ -53,7 +49,6 @@ public class DashboardController {
      * Update
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    @ResponseBody
     public DashboardDTO updateDashboard(@RequestBody DashboardDTO dashboard) {
         DashboardDTO updatedDashboard = dashboardService.update(dashboard);
         System.out.println("Dashboard updated with id = " + updatedDashboard.getId());
