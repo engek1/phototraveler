@@ -16,6 +16,10 @@
         <relativePath>../parent</relativePath>
     </parent>
 
+    <properties>
+        <output.dir>${project.parent.basedir}/../webapps</output.dir>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>ch.bfh.bti7515.phototraveler</groupId>
@@ -57,10 +61,25 @@
                 <plugins>
                     <plugin>
                         <artifactId>maven-war-plugin</artifactId>
-                        <version>2.1.1</version>
                         <configuration>
-                            <outputDirectory>${project.parent.basedir}/../webapps</outputDirectory>
+                            <outputDirectory>${output.dir}</outputDirectory>
                             <warName>ROOT</warName>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <artifactId>maven-clean-plugin</artifactId>
+                        <configuration>
+                            <filesets>
+                                <fileset>
+                                    <directory>${output.dir}</directory>
+                                    <includes>
+                                        <include>**/*.war</include>
+                                    </includes>
+                                    <excludes>
+                                        <exclude>**/*.gitkeep</exclude>
+                                    </excludes>
+                                </fileset>
+                            </filesets>
                         </configuration>
                     </plugin>
                 </plugins>
