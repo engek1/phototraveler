@@ -24,8 +24,8 @@
     </appender>
     -->
 
-    <appender name="SCHNABBER" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>/var/lib/openshift/568a6b4689f5cfa5d0000108/app-root/logs/schnabber.log</file>
+    <appender name="debug" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${OPENSHIFT_LOG_DIR}/debug.log</file>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <Pattern>%d{dd.MM.yyyy HH:mm:ss.SSS} [%thread] %-5level %logger{100} - %msg%n</Pattern>
         </encoder>
@@ -40,7 +40,7 @@
     </appender>
 
     <root level="DEBUG">
-        <appender-ref ref="SCHNABBER" />
+        <appender-ref ref="debug" />
     </root>
 
 </configuration>
