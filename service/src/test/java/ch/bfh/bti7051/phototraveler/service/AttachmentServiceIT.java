@@ -1,6 +1,6 @@
 package ch.bfh.bti7051.phototraveler.service;
 
-import ch.bfh.bti7051.phototraveler.service.dto.AttachmentDTO;
+import ch.bfh.bti7051.phototraveler.model.Attachment;
 import ch.bfh.bti7051.phototraveler.service.services.AttachmentService;
 import org.junit.Assert;
 import org.junit.Test;
@@ -21,23 +21,23 @@ public class AttachmentServiceIT {
     public void test() {
 
         // Create
-        AttachmentDTO newAttachment = new AttachmentDTO();
-        newAttachment.setFilename("testfile");
+        Attachment newAttachment = new Attachment();
+        newAttachment.setName("testfile");
         newAttachment = service.create(newAttachment);
 
         // Read
-        AttachmentDTO readAttachment = service.read(newAttachment.getId());
-        Assert.assertTrue(newAttachment.getFilename().equals(readAttachment.getFilename()));
+        Attachment readAttachment = service.read(newAttachment.getId());
+        Assert.assertTrue(newAttachment.getName().equals(readAttachment.getName()));
 
         // Update
-        readAttachment.setFilename("fineName2");
+        readAttachment.setName("fineName2");
         readAttachment = service.update(readAttachment);
-        AttachmentDTO updatedAttachment = service.read(readAttachment.getId());
-        Assert.assertTrue(readAttachment.getFilename().equals(updatedAttachment.getFilename()));
+        Attachment updatedAttachment = service.read(readAttachment.getId());
+        Assert.assertTrue(readAttachment.getName().equals(updatedAttachment.getName()));
 
         // Delete
         service.delete(updatedAttachment);
-        AttachmentDTO deletedAttachment = service.read(readAttachment.getId());
+        Attachment deletedAttachment = service.read(readAttachment.getId());
         Assert.assertNull(deletedAttachment);
     }
 

@@ -1,5 +1,9 @@
 package ch.bfh.bti7051.phototraveler.model;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -7,19 +11,24 @@ import java.io.Serializable;
  * Created by webel3 on 03.11.2015.
  */
 @Entity
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.NONE)
 public class Attachment implements Serializable {
 
-    @GeneratedValue
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonProperty
     private Long id;
 
     @Basic
-    private String filename;
+    @JsonProperty
+    private String name;
 
     @Basic
-    private String filetype;
+    @JsonProperty
+    private String type;
 
     @Lob
+    @JsonIgnore
     private Byte[] data;
 
     public Long getId() {
@@ -30,20 +39,20 @@ public class Attachment implements Serializable {
         this.id = id;
     }
 
-    public String getFilename() {
-        return filename;
+    public String getName() {
+        return name;
     }
 
-    public void setFilename(String filename) {
-        this.filename = filename;
+    public void setName(String filename) {
+        this.name = filename;
     }
 
-    public String getFiletype() {
-        return filetype;
+    public String getType() {
+        return type;
     }
 
-    public void setFiletype(String filetype) {
-        this.filetype = filetype;
+    public void setType(String filetype) {
+        this.type = filetype;
     }
 
     public Byte[] getData() {

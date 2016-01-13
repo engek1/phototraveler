@@ -1,21 +1,21 @@
 package ch.bfh.bti7051.phototraveler.service.services;
 
-import ch.bfh.bti7051.phototraveler.service.dto.ItemDTO;
+import ch.bfh.bti7051.phototraveler.model.Item;
 
 import java.util.Collection;
 
 /**
- * Created by Lukas on 08.12.2015.
+ * Created by webel3 on 08.12.2015.
  */
 public interface ItemService {
 
-    public ItemDTO create(ItemDTO dto);
+    public Item create(Item item);
 
-    public ItemDTO read(long id);
+    public Item read(long id);
 
-    public Collection<ItemDTO> list();
+    public Collection<Item> list();
 
-    public ItemDTO update(ItemDTO dto);
+    public Item update(Item item);
 
-    public void delete(ItemDTO dto);
+    public void delete(Item item);
 }

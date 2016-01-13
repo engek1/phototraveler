@@ -1,5 +1,8 @@
 package ch.bfh.bti7051.phototraveler.model;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -9,23 +12,31 @@ import java.util.List;
  * Created by webel3 on 03.11.2015.
  */
 @Entity
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.NONE)
 public class Item implements Serializable {
 
-    @GeneratedValue
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonProperty
     private Long id;
 
     @Basic
+    @JsonProperty
     private String name;
 
     @Basic
+    @JsonProperty
     private Boolean visited;
 
     @Basic
+    @JsonProperty
     private String notes;
 
     @OneToMany(cascade = CascadeType.ALL)
-    private List<Attachment> attachments;
+    @JoinColumn(name = "ITEM_ID", nullable = false)
+    @JsonProperty
+    private List<Attachment> attachments = new ArrayList<Attachment>();
+
 
     public Item() {
         this.attachments = new ArrayList<Attachment>();

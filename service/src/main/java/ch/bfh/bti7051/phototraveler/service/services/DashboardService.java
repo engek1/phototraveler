@@ -1,22 +1,21 @@
 package ch.bfh.bti7051.phototraveler.service.services;
 
-import ch.bfh.bti7051.phototraveler.service.dto.AttachmentDTO;
-import ch.bfh.bti7051.phototraveler.service.dto.DashboardDTO;
+import ch.bfh.bti7051.phototraveler.model.Dashboard;
 
 import java.util.Collection;
 
 /**
- * Created by Lukas on 08.12.2015.
+ * Created by webel3 on 08.12.2015.
  */
 public interface DashboardService {
 
-    public DashboardDTO create(DashboardDTO dto);
+    public Dashboard create(Dashboard dashboard);
 
-    public DashboardDTO read(long id);
+    public Dashboard read(long id);
 
-    public Collection<DashboardDTO> list();
+    public Collection<Dashboard> list();
 
-    public DashboardDTO update(DashboardDTO dto);
+    public Dashboard update(Dashboard dashboard);
 
-    public void delete(DashboardDTO dto);
+    public void delete(Dashboard dashboard);
 }

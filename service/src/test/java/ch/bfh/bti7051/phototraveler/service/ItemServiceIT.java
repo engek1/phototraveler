@@ -1,6 +1,6 @@
 package ch.bfh.bti7051.phototraveler.service;
 
-import ch.bfh.bti7051.phototraveler.service.dto.ItemDTO;
+import ch.bfh.bti7051.phototraveler.model.Item;
 import ch.bfh.bti7051.phototraveler.service.services.ItemService;
 import org.junit.Assert;
 import org.junit.Test;
@@ -21,23 +21,23 @@ public class ItemServiceIT {
     public void test() {
 
         // Create
-        ItemDTO newItem = new ItemDTO();
+        Item newItem = new Item();
         newItem.setVisited(true);
         newItem = service.create(newItem);
 
         // Read
-        ItemDTO readItem = service.read(newItem.getId());
+        Item readItem = service.read(newItem.getId());
         Assert.assertTrue(newItem.getVisited().equals(readItem.getVisited()));
 
         // Update
         readItem.setVisited(false);
         readItem = service.update(readItem);
-        ItemDTO updatedAttachment = service.read(readItem.getId());
+        Item updatedAttachment = service.read(readItem.getId());
         Assert.assertTrue(readItem.getVisited().equals(updatedAttachment.getVisited()));
 
         // Delete
         service.delete(updatedAttachment);
-        ItemDTO deletedAttachment = service.read(readItem.getId());
+        Item deletedAttachment = service.read(readItem.getId());
         Assert.assertNull(deletedAttachment);
     }
 

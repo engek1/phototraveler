@@ -1,5 +1,8 @@
 package ch.bfh.bti7051.phototraveler.model;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -9,16 +12,22 @@ import java.util.List;
  * Created by webel3 on 03.11.2015.
  */
 @Entity
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.NONE)
 public class Dashboard implements Serializable {
 
-    @GeneratedValue
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonProperty
     private Long id;
 
     @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "DASHBOARD_ID", nullable = true)
+    @JsonProperty
     private List<Item> items;
 
     @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "DASHBOARD_ID", nullable = false)
+    @JsonProperty
     private List<ItemCollection> collections;
 
     @OneToOne(fetch = FetchType.LAZY)

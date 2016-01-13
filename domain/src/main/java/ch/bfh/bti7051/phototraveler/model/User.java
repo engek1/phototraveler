@@ -1,5 +1,8 @@
 package ch.bfh.bti7051.phototraveler.model;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -7,22 +10,28 @@ import java.io.Serializable;
  * Created by webel3 on 03.11.2015.
  */
 @Entity
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.NONE)
 public class User implements Serializable {
 
-    @GeneratedValue
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonProperty
     private Long id;
 
     @Basic
+    @JsonProperty
     private String name;
 
     @Basic
     private String password;
 
     @Basic
+    @JsonProperty
     private String email;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "user")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "DASHBOARD_ID")
+    @JsonProperty
     private Dashboard dashboard;
 
     public Long getId() {

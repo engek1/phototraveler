@@ -1,19 +1,22 @@
 package ch.bfh.bti7051.phototraveler.service.services;
 
-import ch.bfh.bti7051.phototraveler.service.dto.AttachmentDTO;
+import ch.bfh.bti7051.phototraveler.model.Attachment;
 
 import java.util.Collection;
 
+/**
+ * Created by webel3 on 08.12.2015.
+ */
 public interface AttachmentService {
 
-    public AttachmentDTO create(AttachmentDTO dto);
+    public Attachment create(Attachment attachment);
 
-    public AttachmentDTO read(long id);
+    public Attachment read(long id);
 
-    public Collection<AttachmentDTO> list();
+    public Collection<Attachment> list();
+    
+    public Attachment update(Attachment attachment);
 
-    public AttachmentDTO update(AttachmentDTO dto);
-
-    public void delete(AttachmentDTO dto);
+    public void delete(Attachment attachment);
 
 }

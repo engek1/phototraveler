@@ -3,8 +3,6 @@ package ch.bfh.bti7051.phototraveler.service.impl;
 import ch.bfh.bti7051.phototraveler.model.Attachment;
 import ch.bfh.bti7051.phototraveler.repository.AttachmentRepository;
 import ch.bfh.bti7051.phototraveler.service.services.AttachmentService;
-import ch.bfh.bti7051.phototraveler.service.dto.AttachmentDTO;
-import org.modelmapper.ModelMapper;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -17,9 +15,7 @@ import java.util.List;
  */
 @Named
 public class DefaultAttachmentService implements AttachmentService {
-
-    private final ModelMapper mapper = new ModelMapper();
-
+    
     @Inject
     private AttachmentRepository attachmentRepository;
 
@@ -27,37 +23,28 @@ public class DefaultAttachmentService implements AttachmentService {
         // default empty constructor, required by spring framework.
     }
 
-    public AttachmentDTO create(AttachmentDTO dto) {
-        Attachment attachment = mapper.map(dto, Attachment.class);
-        Attachment created = attachmentRepository.save(attachment);
-        return mapper.map(created, AttachmentDTO.class);
+    public Attachment create(Attachment attachment) {
+        return attachmentRepository.save(attachment);
     }
 
-    public AttachmentDTO read(long id) {
-        Attachment attachment = attachmentRepository.findOne(id);
-        if (attachment == null) {
-            return null;
-        }
-        return mapper.map(attachment, AttachmentDTO.class);
+    public Attachment read(long id) {
+        return attachmentRepository.findOne(id);
     }
 
-    public Collection<AttachmentDTO> list() {
+    public Collection<Attachment> list() {
         Iterable<Attachment> attachments = attachmentRepository.findAll();
-        List<AttachmentDTO> dtoList = new ArrayList<AttachmentDTO>();
+        List<Attachment> list = new ArrayList<Attachment>();
         for (Attachment entity : attachments) {
-            dtoList.add(mapper.map(entity, AttachmentDTO.class));
+            list.add(entity);
         }
-        return dtoList;
+        return list;
     }
 
-    public AttachmentDTO update(AttachmentDTO attachment) {
-        Attachment entity = attachmentRepository.findOne(attachment.getId());
-        mapper.map(attachment, entity);
-        Attachment updated = attachmentRepository.save(entity);
-        return mapper.map(updated, AttachmentDTO.class);
+    public Attachment update(Attachment attachment) {
+        return attachmentRepository.save(attachment);
     }
 
-    public void delete(AttachmentDTO dto) {
-        attachmentRepository.delete(dto.getId());
+    public void delete(Attachment attachment) {
+        attachmentRepository.delete(attachment);
     }
 }

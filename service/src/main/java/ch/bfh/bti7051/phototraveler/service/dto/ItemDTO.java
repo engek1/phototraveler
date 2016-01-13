@@ -17,11 +17,12 @@ public class ItemDTO implements Serializable {
     private List<AttachmentDTO> attachments;
 
     public ItemDTO() {
-        this.attachments = new ArrayList<AttachmentDTO>();
+        this("");
     }
 
     public ItemDTO(String name) {
         this.name = name;
+        this.attachments = new ArrayList<AttachmentDTO>();
     }
 
 

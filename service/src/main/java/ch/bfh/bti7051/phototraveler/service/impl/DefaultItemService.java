@@ -3,8 +3,6 @@ package ch.bfh.bti7051.phototraveler.service.impl;
 import ch.bfh.bti7051.phototraveler.model.Item;
 import ch.bfh.bti7051.phototraveler.repository.ItemRepository;
 import ch.bfh.bti7051.phototraveler.service.services.ItemService;
-import ch.bfh.bti7051.phototraveler.service.dto.ItemDTO;
-import org.modelmapper.ModelMapper;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -13,13 +11,11 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * Created by Lukas on 08.12.2015.
+ * Created by webel3 on 08.12.2015.
  */
 @Named
 public class DefaultItemService implements ItemService {
-
-    private final ModelMapper mapper = new ModelMapper();
-
+    
     @Inject
     private ItemRepository itemRepository;
 
@@ -27,37 +23,28 @@ public class DefaultItemService implements ItemService {
         // default empty constructor, required by spring framework.
     }
 
-    public ItemDTO create(ItemDTO dto) {
-        Item item = mapper.map(dto, Item.class);
-        Item created = itemRepository.save(item);
-        return mapper.map(created, ItemDTO.class);
+    public Item create(Item item) {
+        return itemRepository.save(item);
     }
 
-    public ItemDTO read(long id) {
-        Item item = itemRepository.findOne(id);
-        if (item == null) {
-            return null;
-        }
-        return mapper.map(item, ItemDTO.class);
+    public Item read(long id) {
+        return itemRepository.findOne(id);
     }
 
-    public Collection<ItemDTO> list() {
+    public Collection<Item> list() {
         Iterable<Item> items = itemRepository.findAll();
-        List<ItemDTO> dtoList = new ArrayList<ItemDTO>();
+        List<Item> list = new ArrayList<Item>();
         for (Item entity : items) {
-            dtoList.add(mapper.map(entity, ItemDTO.class));
+            list.add(entity);
         }
-        return dtoList;
+        return list;
     }
 
-    public ItemDTO update(ItemDTO item) {
-        Item entity = itemRepository.findOne(item.getId());
-        mapper.map(item, entity);
-        Item updated = itemRepository.save(entity);
-        return mapper.map(updated, ItemDTO.class);
+    public Item update(Item item) {
+        return itemRepository.save(item);
     }
 
-    public void delete(ItemDTO dto) {
-        itemRepository.delete(dto.getId());
+    public void delete(Item item) {
+        itemRepository.delete(item);
     }
 }

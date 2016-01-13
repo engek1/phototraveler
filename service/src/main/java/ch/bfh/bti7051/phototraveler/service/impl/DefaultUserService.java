@@ -3,20 +3,16 @@ package ch.bfh.bti7051.phototraveler.service.impl;
 import ch.bfh.bti7051.phototraveler.model.User;
 import ch.bfh.bti7051.phototraveler.repository.UserRepository;
 import ch.bfh.bti7051.phototraveler.service.services.UserService;
-import ch.bfh.bti7051.phototraveler.service.dto.UserDTO;
-import org.modelmapper.ModelMapper;
 
 import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
- * Created by Lukas on 08.12.2015.
+ * Created by webel3 on 08.12.2015.
  */
 @Named
 public class DefaultUserService implements UserService {
-
-    private final ModelMapper mapper = new ModelMapper();
-
+    
     @Inject
     private UserRepository userRepository;
 
@@ -24,28 +20,19 @@ public class DefaultUserService implements UserService {
         // default empty constructor, required by spring framework.
     }
 
-    public UserDTO create(UserDTO dto) {
-        User user = mapper.map(dto, User.class);
-        User created = userRepository.save(user);
-        return mapper.map(created, UserDTO.class);
+    public User create(User user) {
+        return userRepository.save(user);
     }
 
-    public UserDTO read(long id) {
-        User user = userRepository.findOne(id);
-        if (user == null) {
-            return null;
-        }
-        return mapper.map(user, UserDTO.class);
+    public User read(long id) {
+        return userRepository.findOne(id);
     }
 
-    public UserDTO update(UserDTO user) {
-        User entity = userRepository.findOne(user.getId());
-        mapper.map(user, entity);
-        User updated = userRepository.save(entity);
-        return mapper.map(updated, UserDTO.class);
+    public User update(User user) {
+        return userRepository.save(user);
     }
 
-    public void delete(UserDTO dto) {
-        userRepository.delete(dto.getId());
+    public void delete(User user) {
+        userRepository.delete(user);
     }
 }
