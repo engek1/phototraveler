@@ -44,7 +44,7 @@ public class DefaultItemService implements ItemService {
         return itemRepository.save(item);
     }
 
-    public void delete(Item item) {
-        itemRepository.delete(item);
+    public void delete(long id) {
+        itemRepository.delete(id);
     }
 }

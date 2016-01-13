@@ -17,6 +17,6 @@ public interface AttachmentService {
     
     public Attachment update(Attachment attachment);
 
-    public void delete(Attachment attachment);
+    public void delete(long id);
 
 }

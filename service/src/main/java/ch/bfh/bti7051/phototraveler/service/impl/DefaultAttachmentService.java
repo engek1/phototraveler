@@ -44,7 +44,7 @@ public class DefaultAttachmentService implements AttachmentService {
         return attachmentRepository.save(attachment);
     }
 
-    public void delete(Attachment attachment) {
-        attachmentRepository.delete(attachment);
+    public void delete(long id) {
+        attachmentRepository.delete(id);
     }
 }

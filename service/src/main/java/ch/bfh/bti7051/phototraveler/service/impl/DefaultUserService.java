@@ -32,7 +32,7 @@ public class DefaultUserService implements UserService {
         return userRepository.save(user);
     }
 
-    public void delete(User user) {
-        userRepository.delete(user);
+    public void delete(long id) {
+        userRepository.delete(id);
     }
 }

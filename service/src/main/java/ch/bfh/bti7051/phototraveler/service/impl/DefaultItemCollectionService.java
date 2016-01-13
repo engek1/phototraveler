@@ -44,7 +44,7 @@ public class DefaultItemCollectionService implements ItemCollectionService {
         return itemRepository.save(itemCollection);
     }
 
-    public void delete(ItemCollection itemCollection) {
-        itemRepository.delete(itemCollection);
+    public void delete(long id) {
+        itemRepository.delete(id);
     }
 }

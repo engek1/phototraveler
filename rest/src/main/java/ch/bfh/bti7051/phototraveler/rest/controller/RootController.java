@@ -141,23 +141,23 @@ public class RootController {
 
     /* ==================================== DELETE (delete) ==================================== */
 
-    @RequestMapping(value = "/dashboards/{dashboardId}", method = RequestMethod.POST)
-    public void deleteDashboard(@RequestBody Dashboard dashboard) {
-        dashboardService.delete(dashboard);
+    @RequestMapping(value = "/dashboards/{dashboardId}", method = RequestMethod.DELETE)
+    public void deleteDashboard(@PathVariable long dashboardId) {
+        dashboardService.delete(dashboardId);
     }
 
-    @RequestMapping(value = "/collections/{collectionId}", method = RequestMethod.POST)
-    public void deleteCollection(@RequestBody ItemCollection collection) {
-        itemCollectionService.delete(collection);
+    @RequestMapping(value = "/collections/{collectionId}", method = RequestMethod.DELETE)
+    public void deleteCollection(@PathVariable long collectionId) {
+        itemCollectionService.delete(collectionId);
     }
 
-    @RequestMapping(value = "/items/{itemId}", method = RequestMethod.POST)
-    public void deleteItem(@RequestBody Item item) {
-        itemService.delete(item);
+    @RequestMapping(value = "/items/{itemId}", method = RequestMethod.DELETE)
+    public void deleteItem(@PathVariable long itemId) {
+        itemService.delete(itemId);
     }
 
-    @RequestMapping(value = "/attachments/{attachmentId}", method = RequestMethod.POST)
-    public void deleteAttachment(@RequestBody Attachment attachment) {
-        attachmentService.delete(attachment);
+    @RequestMapping(value = "/attachments/{attachmentId}", method = RequestMethod.DELETE)
+    public void deleteAttachment(@PathVariable long attachmentId) {
+        attachmentService.delete(attachmentId);
     }
 }

@@ -17,6 +17,6 @@ public interface ItemCollectionService {
 
     public ItemCollection update(ItemCollection itemCollection);
 
-    public void delete(ItemCollection itemCollection);
+    public void delete(long id);
 
 }

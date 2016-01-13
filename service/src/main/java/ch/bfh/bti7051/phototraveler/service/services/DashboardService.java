@@ -17,5 +17,5 @@ public interface DashboardService {
 
     public Dashboard update(Dashboard dashboard);
 
-    public void delete(Dashboard dashboard);
+    public void delete(long id);
 }

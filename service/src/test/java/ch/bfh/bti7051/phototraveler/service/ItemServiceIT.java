@@ -36,7 +36,7 @@ public class ItemServiceIT {
         Assert.assertTrue(readItem.getVisited().equals(updatedAttachment.getVisited()));
 
         // Delete
-        service.delete(updatedAttachment);
+        service.delete(updatedAttachment.getId());
         Item deletedAttachment = service.read(readItem.getId());
         Assert.assertNull(deletedAttachment);
     }

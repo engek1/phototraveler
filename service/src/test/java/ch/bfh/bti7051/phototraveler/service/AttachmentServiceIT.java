@@ -36,7 +36,7 @@ public class AttachmentServiceIT {
         Assert.assertTrue(readAttachment.getName().equals(updatedAttachment.getName()));
 
         // Delete
-        service.delete(updatedAttachment);
+        service.delete(updatedAttachment.getId());
         Attachment deletedAttachment = service.read(readAttachment.getId());
         Assert.assertNull(deletedAttachment);
     }

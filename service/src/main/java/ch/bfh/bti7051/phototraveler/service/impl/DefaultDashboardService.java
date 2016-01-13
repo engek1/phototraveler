@@ -44,8 +44,8 @@ public class DefaultDashboardService implements DashboardService {
         return dashboardRepository.save(dashboard);
     }
 
-    public void delete(Dashboard dashboard) {
-        dashboardRepository.delete(dashboard);
+    public void delete(long id) {
+        dashboardRepository.delete(id);
     }
 }
 
