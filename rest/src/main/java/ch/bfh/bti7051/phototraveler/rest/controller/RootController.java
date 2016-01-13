@@ -3,20 +3,16 @@ package ch.bfh.bti7051.phototraveler.rest.controller;
 import ch.bfh.bti7051.phototraveler.model.Attachment;
 import ch.bfh.bti7051.phototraveler.model.Dashboard;
 import ch.bfh.bti7051.phototraveler.model.Item;
+import ch.bfh.bti7051.phototraveler.model.ItemCollection;
 import ch.bfh.bti7051.phototraveler.service.services.AttachmentService;
 import ch.bfh.bti7051.phototraveler.service.services.DashboardService;
 import ch.bfh.bti7051.phototraveler.service.services.ItemCollectionService;
 import ch.bfh.bti7051.phototraveler.service.services.ItemService;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
-import java.util.List;
-import java.util.Objects;
 
 /**
  * Created by webel3 on 13.01.2016.
@@ -40,29 +36,20 @@ public class RootController {
     private DashboardService dashboardService;
 
 
-    /**
-     * Return the wanted dashboard.
-     *
-     * The following elements are included in the dashboard:<br>
-     *   - List of items<br>
-     *   - List of itemCollections<br>
-     *
-     * @param dashboardId ID of the wanted dashboard
-     * @return dashboard JSON representation
-     */
-    @RequestMapping(value = "/dashboard/{dashboardId}", method = RequestMethod.GET)
+    /* ==================================== GET (read) ========================================= */
+
+    @RequestMapping(value = "/dashboards/{dashboardId}", method = RequestMethod.GET)
     public Dashboard getDashboard(@PathVariable long dashboardId) {
         return dashboardService.read(dashboardId);
     }
 
 
-    /**
-     * Return a list of attachments for the wanted item.
+    /*
+     * Those 2 services should not be necessary, because 'dashboard' has all its
+     * items and itemCollections and they have their attachments itselves.
      *
-     * @param itemId ID of an item (which is used as context for an attachment)
-     * @return list of attachments for the wanted item
-     */
-    @RequestMapping(value = "/item/{dashboardId}/attachment", method = RequestMethod.GET)
+     *
+    @RequestMapping(value = "/items/{itemId}/attachments", method = RequestMethod.GET)
     public List<Attachment> getItems(@PathVariable long itemId) {
         Item item = itemService.read(itemId);
         if (Objects.isNull(item)) {
@@ -71,6 +58,106 @@ public class RootController {
         return item.getAttachments();
     }
 
+    @RequestMapping(value = "/items/{itemId}/attachments/{attachmentId}", method = RequestMethod.GET)
+    public Attachment getItem(@PathVariable long itemId, @PathVariable long attachmentId) {
+        return attachmentService.read(attachmentId);
+    }
+    */
+
+    /* ==================================== POST (create) ====================================== */
+
+    @RequestMapping(value = "/dashboards", method = RequestMethod.POST)
+    public Dashboard createDashboard(@RequestBody Dashboard dashboard) {
+        return dashboardService.create(dashboard);
+    }
 
 
+    @RequestMapping(value = "/dashboards/{dashboardId}/collections", method = RequestMethod.POST)
+    public ItemCollection createItem(@PathVariable long dashboardId, @RequestBody ItemCollection itemCollection) {
+        Dashboard board = dashboardService.read(dashboardId);
+        board.addCollection(itemCollection);
+        dashboardService.update(board);
+
+        // TODO : was zurückgeben? itemCollection ist "nur" das empfangene element
+        return itemCollection;
+    }
+
+
+    @RequestMapping(value = "/dashboards/{dashboardId}/items", method = RequestMethod.POST)
+    public Item createItemOnDashboard(@PathVariable long dashboardId, @RequestBody Item item) {
+        Dashboard board = dashboardService.read(dashboardId);
+        board.addItem(item);
+        dashboardService.update(board);
+
+        // TODO : was genau zurückgeben? item ist "nur" das empfangene element
+        return item;
+    }
+
+
+    @RequestMapping(value = "/collections/{collectionId}/items", method = RequestMethod.POST)
+    public Item createItemOnCollection(@PathVariable long collectionId, @RequestBody Item item) {
+        ItemCollection collection = itemCollectionService.read(collectionId);
+        collection.addItem(item);
+        itemCollectionService.update(collection);
+
+        // TODO : was zurückgeben? item ist "nur" das empfangene element
+        return item;
+    }
+
+
+    @RequestMapping(value = "/items/{itemId}/attachments", method = RequestMethod.POST)
+    public Attachment createAttachment(@PathVariable long itemId, @RequestBody Attachment attachment) {
+        Item item = itemService.read(itemId);
+        item.addAttachment(attachment);
+        itemService.update(item);
+
+        // TODO : was zurückgeben? attachment ist "nur" das empfangene element
+        return attachment;
+    }
+
+    /* ==================================== PUT (update) ======================================= */
+
+    @RequestMapping(value = "/dashboards/{dashboardId}", method = RequestMethod.PUT)
+    public Dashboard updateDashboard(@RequestBody Dashboard dashboard) {
+        return dashboardService.update(dashboard);
+    }
+
+
+    @RequestMapping(value = "/collections/{collectionId}", method = RequestMethod.PUT)
+    public ItemCollection updateCollection(@RequestBody ItemCollection collection) {
+        return itemCollectionService.update(collection);
+    }
+
+
+    @RequestMapping(value = "/items/{itemId}", method = RequestMethod.PUT)
+    public Item updateItem(@RequestBody Item item) {
+        return itemService.update(item);
+    }
+
+    @RequestMapping(value = "attachments/{attachmentId}", method = RequestMethod.PUT)
+    public Attachment updateAttachment(@RequestBody Attachment attachment) {
+        return attachmentService.update(attachment);
+    }
+
+    /* ==================================== DELETE (delete) ==================================== */
+
+    @RequestMapping(value = "/dashboards/{dashboardId}", method = RequestMethod.POST)
+    public void deleteDashboard(@RequestBody Dashboard dashboard) {
+        dashboardService.delete(dashboard);
+    }
+
+    @RequestMapping(value = "/collections/{collectionId}", method = RequestMethod.POST)
+    public void deleteCollection(@RequestBody ItemCollection collection) {
+        itemCollectionService.delete(collection);
+    }
+
+    @RequestMapping(value = "/items/{itemId}", method = RequestMethod.POST)
+    public void deleteItem(@RequestBody Item item) {
+        itemService.delete(item);
+    }
+
+    @RequestMapping(value = "/attachments/{attachmentId}", method = RequestMethod.POST)
+    public void deleteAttachment(@RequestBody Attachment attachment) {
+        attachmentService.delete(attachment);
+    }
 }
