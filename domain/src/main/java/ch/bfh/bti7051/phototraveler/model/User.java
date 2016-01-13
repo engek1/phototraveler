@@ -22,7 +22,7 @@ public class User implements Serializable {
     @Basic
     private String email;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "user")
     private Dashboard dashboard;
 
     public Long getId() {

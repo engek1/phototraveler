@@ -21,6 +21,10 @@ public class Dashboard implements Serializable {
     @OneToMany(cascade = CascadeType.ALL)
     private List<ItemCollection> collections;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "USER_ID")
+    private User user;
+
     public Dashboard() {
         this.items = new ArrayList<Item>();
         this.collections = new ArrayList<ItemCollection>();
