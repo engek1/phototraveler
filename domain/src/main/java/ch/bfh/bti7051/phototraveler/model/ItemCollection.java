@@ -1,6 +1,7 @@
 package ch.bfh.bti7051.phototraveler.model;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
@@ -22,24 +23,26 @@ public class ItemCollection implements Serializable {
     @JsonProperty
     private Long id;
 
-    @Basic
+    @Basic(optional = false)
     @JsonProperty
     private String name;
 
+    @Basic(optional = true)
     @Temporal(TemporalType.DATE)
     @JsonProperty
     private Date startingTime;
 
+    @Basic(optional = true)
     @Temporal(TemporalType.DATE)
     @JsonProperty
     private Date endingTime;
 
-    @Basic
+    @Basic(optional = true)
     @JsonProperty
     private String notes;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "COLLECTION_ID", nullable = true)
+    @JoinColumn(name = "COLLECTION_ID", insertable = true)
     @JsonProperty
     private List<Item> items;
 
@@ -97,5 +100,13 @@ public class ItemCollection implements Serializable {
 
     public void addItems(List<Item> items) {
         this.items.addAll(items);
+    }
+
+    @JsonIgnore
+    public Item getLastInsertedItem() {
+        if (this.items.size() > 0) {
+            return this.items.get(this.items.size() - 1);
+        }
+        return null;
     }
 }

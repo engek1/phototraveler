@@ -19,17 +19,18 @@ public class Attachment implements Serializable {
     @JsonProperty
     private Long id;
 
-    @Basic
+    @Basic(optional = false)
     @JsonProperty
     private String name;
 
-    @Basic
+    @Basic(optional = true)
     @JsonProperty
     private String type;
 
     @Lob
+    @Basic(optional = true, fetch = FetchType.LAZY)
     @JsonIgnore
-    private Byte[] data;
+    private byte[] data;
 
     public Long getId() {
         return id;
@@ -55,11 +56,11 @@ public class Attachment implements Serializable {
         this.type = filetype;
     }
 
-    public Byte[] getData() {
+    public byte[] getData() {
         return data;
     }
 
-    public void setData(Byte[] data) {
+    public void setData(byte[] data) {
         this.data = data;
     }
 }

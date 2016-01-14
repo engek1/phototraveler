@@ -5,7 +5,6 @@
 
         <class>ch.bfh.bti7051.phototraveler.model.User</class>
         <class>ch.bfh.bti7051.phototraveler.model.Item</class>
-        <class>ch.bfh.bti7051.phototraveler.model.Dashboard</class>
         <class>ch.bfh.bti7051.phototraveler.model.ItemCollection</class>
         <class>ch.bfh.bti7051.phototraveler.model.Attachment</class>
 

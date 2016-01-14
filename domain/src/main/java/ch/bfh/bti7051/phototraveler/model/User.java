@@ -1,10 +1,13 @@
 package ch.bfh.bti7051.phototraveler.model;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by webel3 on 03.11.2015.
@@ -18,21 +21,31 @@ public class User implements Serializable {
     @JsonProperty
     private Long id;
 
-    @Basic
+    @Basic(optional = false)
     @JsonProperty
     private String name;
 
-    @Basic
+    @Basic(optional = false)
     private String password;
 
-    @Basic
+    @Basic(optional = true)
     @JsonProperty
     private String email;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "DASHBOARD_ID")
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "USER_ID", insertable = true)
     @JsonProperty
-    private Dashboard dashboard;
+    private List<Item> items;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "USER_ID", insertable = true)
+    @JsonProperty
+    private List<ItemCollection> collections;
+
+    public User() {
+        this.items = new ArrayList<Item>();
+        this.collections = new ArrayList<ItemCollection>();
+    }
 
     public Long getId() {
         return id;
@@ -66,11 +79,43 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    public Dashboard getDashboard() {
-        return dashboard;
+    public List<Item> getItems() {
+        return items;
     }
 
-    public void setDashboard(Dashboard dashboard) {
-        this.dashboard = dashboard;
+    public void addItem(Item item) {
+        this.items.add(item);
+    }
+
+    public void addItems(List<Item> items) {
+        this.items.addAll(items);
+    }
+
+    public List<ItemCollection> getCollections() {
+        return collections;
+    }
+
+    public void addCollection(ItemCollection itemCollection) {
+        this.collections.add(itemCollection);
+    }
+
+    public void addCollections(List<ItemCollection> collections) {
+        this.collections.addAll(collections);
+    }
+
+    @JsonIgnore
+    public Item getLastInsertedItem() {
+        if (this.items.size() > 0) {
+            return this.items.get(this.items.size() -1);
+        }
+        return null;
+    }
+
+    @JsonIgnore
+    public ItemCollection getLastInsertedItemCollection() {
+        if (this.collections.size() > 0) {
+            return this.collections.get(this.collections.size() -1);
+        }
+        return null;
     }
 }

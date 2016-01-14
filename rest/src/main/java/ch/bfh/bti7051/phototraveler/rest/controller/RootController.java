@@ -1,13 +1,13 @@
 package ch.bfh.bti7051.phototraveler.rest.controller;
 
 import ch.bfh.bti7051.phototraveler.model.Attachment;
-import ch.bfh.bti7051.phototraveler.model.Dashboard;
 import ch.bfh.bti7051.phototraveler.model.Item;
 import ch.bfh.bti7051.phototraveler.model.ItemCollection;
+import ch.bfh.bti7051.phototraveler.model.User;
 import ch.bfh.bti7051.phototraveler.service.services.AttachmentService;
-import ch.bfh.bti7051.phototraveler.service.services.DashboardService;
 import ch.bfh.bti7051.phototraveler.service.services.ItemCollectionService;
 import ch.bfh.bti7051.phototraveler.service.services.ItemService;
+import ch.bfh.bti7051.phototraveler.service.services.UserService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
@@ -33,64 +33,42 @@ public class RootController {
     private ItemCollectionService itemCollectionService;
 
     @Inject
-    private DashboardService dashboardService;
-
+    private UserService userService;
 
     /* ==================================== GET (read) ========================================= */
 
-    @RequestMapping(value = "/dashboards/{dashboardId}", method = RequestMethod.GET)
-    public Dashboard getDashboard(@PathVariable long dashboardId) {
-        return dashboardService.read(dashboardId);
+    @RequestMapping(value = "/users/{userId}", method = RequestMethod.GET)
+    public User getUser(@PathVariable long userId) {
+        return userService.read(userId);
     }
-
-
-    /*
-     * Those 2 services should not be necessary, because 'dashboard' has all its
-     * items and itemCollections and they have their attachments itselves.
-     *
-     *
-    @RequestMapping(value = "/items/{itemId}/attachments", method = RequestMethod.GET)
-    public List<Attachment> getItems(@PathVariable long itemId) {
-        Item item = itemService.read(itemId);
-        if (Objects.isNull(item)) {
-            return null;
-        }
-        return item.getAttachments();
-    }
-
-    @RequestMapping(value = "/items/{itemId}/attachments/{attachmentId}", method = RequestMethod.GET)
-    public Attachment getItem(@PathVariable long itemId, @PathVariable long attachmentId) {
-        return attachmentService.read(attachmentId);
-    }
-    */
 
     /* ==================================== POST (create) ====================================== */
 
-    @RequestMapping(value = "/dashboards", method = RequestMethod.POST)
-    public Dashboard createDashboard(@RequestBody Dashboard dashboard) {
-        return dashboardService.create(dashboard);
+    @RequestMapping(value = "/users", method = RequestMethod.POST)
+    public User createUser(@RequestBody User user) {
+        return userService.create(user);
     }
 
 
-    @RequestMapping(value = "/dashboards/{dashboardId}/collections", method = RequestMethod.POST)
-    public ItemCollection createItem(@PathVariable long dashboardId, @RequestBody ItemCollection itemCollection) {
-        Dashboard board = dashboardService.read(dashboardId);
-        board.addCollection(itemCollection);
-        dashboardService.update(board);
+    @RequestMapping(value = "/users/{userId}/collections", method = RequestMethod.POST)
+    public ItemCollection createCollection(@PathVariable long userId, @RequestBody ItemCollection collection) {
+        User user = userService.read(userId);
+        user.addCollection(collection);
+        userService.update(user);
 
-        // TODO : was zurückgeben? itemCollection ist "nur" das empfangene element
-        return itemCollection;
+        // the last inserted collection is the one we added
+        return user.getLastInsertedItemCollection();
     }
 
 
-    @RequestMapping(value = "/dashboards/{dashboardId}/items", method = RequestMethod.POST)
-    public Item createItemOnDashboard(@PathVariable long dashboardId, @RequestBody Item item) {
-        Dashboard board = dashboardService.read(dashboardId);
-        board.addItem(item);
-        dashboardService.update(board);
+    @RequestMapping(value = "/users/{userId}/items", method = RequestMethod.POST)
+    public Item createItem(@PathVariable long userId, @RequestBody Item item) {
+        User user = userService.read(userId);
+        user.addItem(item);
+        userService.update(user);
 
-        // TODO : was genau zurückgeben? item ist "nur" das empfangene element
-        return item;
+        // the last inserted item is the one we added
+        return user.getLastInsertedItem();
     }
 
 
@@ -100,8 +78,8 @@ public class RootController {
         collection.addItem(item);
         itemCollectionService.update(collection);
 
-        // TODO : was zurückgeben? item ist "nur" das empfangene element
-        return item;
+        // the last inserted item is the one we added
+        return collection.getLastInsertedItem();
     }
 
 
@@ -111,15 +89,15 @@ public class RootController {
         item.addAttachment(attachment);
         itemService.update(item);
 
-        // TODO : was zurückgeben? attachment ist "nur" das empfangene element
-        return attachment;
+        // the last inserted attachment is the one we added
+        return item.getLastInsertedAttachment();
     }
 
     /* ==================================== PUT (update) ======================================= */
 
-    @RequestMapping(value = "/dashboards/{dashboardId}", method = RequestMethod.PUT)
-    public Dashboard updateDashboard(@RequestBody Dashboard dashboard) {
-        return dashboardService.update(dashboard);
+    @RequestMapping(value = "/users/{userId}", method = RequestMethod.PUT)
+    public User updateUser(@RequestBody User user) {
+        return userService.update(user);
     }
 
 
@@ -141,9 +119,9 @@ public class RootController {
 
     /* ==================================== DELETE (delete) ==================================== */
 
-    @RequestMapping(value = "/dashboards/{dashboardId}", method = RequestMethod.DELETE)
-    public void deleteDashboard(@PathVariable long dashboardId) {
-        dashboardService.delete(dashboardId);
+    @RequestMapping(value = "/users/{userId}", method = RequestMethod.DELETE)
+    public void deleteUser(@PathVariable long id) {
+        userService.delete(id);
     }
 
     @RequestMapping(value = "/collections/{collectionId}", method = RequestMethod.DELETE)
