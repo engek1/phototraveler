@@ -56,6 +56,9 @@ public class RootController {
         user.addCollection(collection);
         userService.update(user);
 
+        // TODO remove workaround: reload user so that the inserted element has its id set.
+        user = userService.read(user.getId());
+
         // the last inserted collection is the one we added
         return user.getLastInsertedItemCollection();
     }
@@ -66,6 +69,9 @@ public class RootController {
         User user = userService.read(userId);
         user.addItem(item);
         userService.update(user);
+
+        // TODO remove workaround: reload user so that the inserted element has its id set.
+        user = userService.read(user.getId());
 
         // the last inserted item is the one we added
         return user.getLastInsertedItem();
@@ -78,6 +84,9 @@ public class RootController {
         collection.addItem(item);
         itemCollectionService.update(collection);
 
+        // TODO remove workaround: reload collection so that the inserted element has its id set.
+        collection = itemCollectionService.read(collection.getId());
+
         // the last inserted item is the one we added
         return collection.getLastInsertedItem();
     }
@@ -88,6 +97,9 @@ public class RootController {
         Item item = itemService.read(itemId);
         item.addAttachment(attachment);
         itemService.update(item);
+
+        // TODO remove workaround: reload item so that the inserted element has its id set.
+        item = itemService.read(item.getId());
 
         // the last inserted attachment is the one we added
         return item.getLastInsertedAttachment();
