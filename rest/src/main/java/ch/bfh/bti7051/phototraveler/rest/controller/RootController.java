@@ -54,10 +54,7 @@ public class RootController {
     public ItemCollection createCollection(@PathVariable long userId, @RequestBody ItemCollection collection) {
         User user = userService.read(userId);
         user.addCollection(collection);
-        userService.update(user);
-
-        // TODO remove workaround: reload user so that the inserted element has its id set.
-        user = userService.read(user.getId());
+        user = userService.update(user);
 
         // the last inserted collection is the one we added
         return user.getLastInsertedItemCollection();
@@ -68,10 +65,7 @@ public class RootController {
     public Item createItem(@PathVariable long userId, @RequestBody Item item) {
         User user = userService.read(userId);
         user.addItem(item);
-        userService.update(user);
-
-        // TODO remove workaround: reload user so that the inserted element has its id set.
-        user = userService.read(user.getId());
+        user = userService.update(user);
 
         // the last inserted item is the one we added
         return user.getLastInsertedItem();
@@ -82,10 +76,7 @@ public class RootController {
     public Item createItemOnCollection(@PathVariable long collectionId, @RequestBody Item item) {
         ItemCollection collection = itemCollectionService.read(collectionId);
         collection.addItem(item);
-        itemCollectionService.update(collection);
-
-        // TODO remove workaround: reload collection so that the inserted element has its id set.
-        collection = itemCollectionService.read(collection.getId());
+        collection = itemCollectionService.update(collection);
 
         // the last inserted item is the one we added
         return collection.getLastInsertedItem();
@@ -96,10 +87,7 @@ public class RootController {
     public Attachment createAttachment(@PathVariable long itemId, @RequestBody Attachment attachment) {
         Item item = itemService.read(itemId);
         item.addAttachment(attachment);
-        itemService.update(item);
-
-        // TODO remove workaround: reload item so that the inserted element has its id set.
-        item = itemService.read(item.getId());
+        item = itemService.update(item);
 
         // the last inserted attachment is the one we added
         return item.getLastInsertedAttachment();
